@@ -26,3 +26,11 @@ A simple SQL Server schema and seed data for a medicine store database. The scri
 
 - The scripts use `bit` flags for customer type fields (individual, hospital, pharmacy).
 - The `Product_Check` table is updated based on order amount vs. product stock.
+
+## 👥 Contributors
+
+<!-- ALL-CONTRIBUTORS-BADGE: START -->
+<!-- ALL-CONTRIBUTORS-BADGE: END -->
+
+<!-- ALL-CONTRIBUTORS-TABLE: START -->
+<!-- ALL-CONTRIBUTORS-TABLE: END -->
