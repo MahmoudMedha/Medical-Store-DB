@@ -1,0 +1,241 @@
+--CREAT DB
+create database Medicine_Stor;
+
+use Medicine_Stor;
+
+ -- creation
+
+create table Customer (
+
+Custm_ID int  primary key ,
+Address_Custm varchar(255),
+Name_Custm varchar (255),
+Indivadual varchar(255),
+Hospital varchar(255),
+Pharmacy varchar (255)
+
+);
+
+create table Custm_Phone(
+
+Custm_Phone varchar(255) , 
+Custm_ID int  FOREIGN KEY REFERENCES Customer(Custm_ID),
+CONSTRAINT PK_Phone PRIMARY KEY (Custm_ID,Custm_Phone)
+
+);
+
+create table Orders(
+
+order_id int  primary key ,
+amount bigint, 
+order_date datetime ,
+delivery_date datetime ,
+delivery bit , 
+pending bit , 
+Custm_ID int   foreign key references Customer(Custm_ID)
+
+);
+
+create table Suppliers(
+
+ Sup_ID INT  Primary Key, 
+ Name varchar(255) ,
+ Address varchar(255)
+
+ );
+
+create table Products(
+
+Product_ID int  primary key , 
+price  decimal  ,
+Expiry_Date date , 
+Amount bigint ,
+Name varchar(255) ,
+Sup_ID int  foreign key references Suppliers(Sup_Id)
+
+);
+
+create table Product_Check(
+
+order_ID int  foreign key references Orders(order_ID),
+Product_ID int foreign key references Products(Product_ID),
+Found bit  , 
+CONSTRAINT PK_Product_Check PRIMARY KEY (order_ID,Product_ID)
+ 
+ );
+
+ create table Supplier_Productes(
+ 
+ Sup_ID int  foreign key references Suppliers(Sup_ID),
+ Products varchar(255)  ,
+ constraint Pk_Sup_pro Primary Key (Sup_ID,Products)
+
+ );
+
+ create table Supplier_Phone(
+ 
+ Sup_ID int  foreign key references Suppliers(Sup_ID),
+ Sup_Phone varchar(255)  ,
+ constraint Pk_Sup_Phone Primary Key (Sup_ID,Sup_Phone)
+
+ );
+ 
+-- Modifing colum 
+
+--Customer
+
+alter table [dbo].[Customer]
+alter column [Indivadual] bit ;
+
+alter table [dbo].[Customer]
+alter column [Pharmacy] bit;
+
+alter table [dbo].[Customer]
+alter column [Hospital] bit;  
+
+-- Order 
+
+alter table [dbo].[Orders]
+alter column [delivery] datetime ;  
+alter table [dbo].[Orders]
+alter column [pending] datetime ;  
+--alter table [dbo].[Orders]
+--Drop column [amount] ;  
+--alter table [dbo].[Product_Check]
+--add  amount int ; 
+
+-- 
+
+
+--  Value the Tables
+
+ insert into [dbo].[Customer]([Custm_ID],[Address_Custm],[Name_Custm],[Indivadual],[Hospital],[Pharmacy])
+ values 
+ (23, 'Assuit', 'Amr',1,0,0 ),
+ (24, 'Asson', 'El_Amal',0,1,0 ),
+ (25, 'Assuit', 'Amr Khalid',0,0,1 ),
+ (26, 'Giza', 'Sultan',1,0,0 ),
+ (27, 'Cairo', 'AL-huat',0,1,0 ),
+ (28, 'Assuit', 'Morako',0,1,0 ),
+ (29, 'Cairo', 'Nour',0,1,0 ),
+ (30, 'Assuit', 'Mk',0,0,1 );
+
+
+
+ 
+ insert into [dbo].[Custm_Phone]
+ values 
+ ('+20 10 1234 5678',23 ),
+ ('+20 11 9876 5432',24 ),
+ ('+20 12 4567 8910',25 ),
+ ('+20 15 7890 1234',26 ),
+ ('+20 10 5678 4321',27 ),
+ ('+20 11 2345 6789',28 ),
+ ('+20 12 8765 4321',29 ),
+ ('+20 12 9899 3213',30 )	;
+ 
+
+
+  
+
+  insert into [dbo].[Orders]
+ values 
+ (1  ,34  ,'2002-01-23 14:20:23' ,'2002-01-24 14:20:23' ,1,0,23 ),
+ (2  ,45  ,'2002-01-24 11:20:23' ,null ,0,1 ,30),  
+ (3  ,123 ,'2002-01-25 19:40:23' ,null ,0,1 ,25),  
+ (4  ,1423,'2002-01-23 18:40:23' ,'2002-01-27 18:40:23' ,1,0 ,25),
+ (5  ,23  ,'2002-01-22 16:10:23' ,null ,0,1 ,26),
+ (6  ,324 ,'2002-01-27 11:20:23' ,null ,0,1 ,27),
+ (7  ,342 ,'2002-01-21 13:40:23' ,null ,0,1 ,28),
+ (8  ,2314,'2002-01-28 12:50:23' ,null ,0,1 ,29);
+
+
+  insert into [dbo].[Suppliers] 
+ values 
+ (1, 'Pharco'	 ,'Assuit'	),
+ (2, 'Amoun '	 ,'Cairo'	),
+ (3, 'EVA '		 ,'Aswan'	),
+ (4, 'GNP'       ,'Giza'	),
+ (5, 'APEX '	 ,'Assuit'	),
+ (6, 'Rameda'	 ,'Cairo'	),
+ (7, 'Minapharm' ,'ALEX'	),
+ (8, 'Mash '	 ,'GIZA'	),
+ (9, 'SEDICO '	 ,'Assuit'	);
+
+
+ insert into [dbo].[Products]
+ values (1,45.5,'2030-2-23',1000,'vitamins'	 ,1)
+,(2,5.5,'2030-2-23',1000,'antibiotics'		 ,3) 
+,(3,4.5,'2030-2-23',1000, 'drugs'			 ,4)
+,(4,50.5,'2030-2-23',1000,'CNS '			 ,5)
+,(5,42.5,'2030-2-23',1000,'antihypertensives',8)
+,(6,35.5,'2030-2-23',1000,'veterinary '		 ,5) 
+,(7,45.5,'2030-2-23',1000,'oncology'		 ,2)
+,(8,435.5,'2030-2-23',1000,'diabetes '		 ,5)
+,(9,415.5,'2030-2-23',1000,'dermatological ' ,9) ;
+
+select * from [dbo].[Products]
+
+
+
+
+ insert into [dbo].[Supplier_Productes]
+ values 
+ (1,'vitamins'	)
+,(2,'antibiotics'		) 
+,(3, 'drugs'			)
+,(4,'CNS '			)
+,(5,'antihypertensives')
+,(6,'veterinary '		) 
+,(7,'oncology'		)
+,(8,'diabetes '		)
+,(9,'dermatological '	);
+
+
+ insert into [dbo].[Supplier_Phone]
+ values 
+ (1 ,'01155687208' )
+,(2 ,'01269612011'	)
+,(3 ,'01190171204'	) 
+,(4 ,'01251957374'	)
+,(5 ,'01222798797'	)
+,(6 ,'01299533647'	)
+,(7 ,'01268467495'	)
+,(8 ,'01070212092'	) 
+,(9 ,'01170548271'	);
+insert into [dbo].[Product_Check]
+values 
+(1,9,null ),
+(5,3,null ),
+(2,8,null ),
+(3,7,null ),
+(4,5,null ),
+(6,1,null ),
+(7,6,null ),
+(7,4,null ),
+(8,2,null );
+
+
+
+-- UPDATE  
+UPDATE [dbo].[Product_Check]
+SET Found = CASE
+    WHEN o.amount < p.Amount THEN 1
+    ELSE 0
+END
+FROM [dbo].[Product_Check] c
+INNER JOIN Orders o ON c.order_ID = o.order_id
+INNER JOIN Products p ON c.Product_ID = p.Product_ID;
+
+
+-- select 
+
+select * from [dbo].[Custm_Phone]
+select * from [dbo].[Customer]
+select * from [dbo].[Orders]
+select * from [dbo].[Products]
+select * from [dbo].[Product_Check]
+select * from [dbo].[Supplier_Phone]
+select * from [dbo].[Supplier_Productes]
+select * from [dbo].[Suppliers]
+drop database Medicine_Stor
