@@ -1,6 +1,6 @@
 # Medicine Store Database Project
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A simple SQL Server schema and seed data for a medicine store database. The scripts create tables, insert sample data, and run basic queries to inspect the data.
@@ -49,6 +49,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/IbraheemSultan"><img src="https://avatars.githubusercontent.com/u/70492711?v=4?s=100" width="100px;" alt="Ibraheem Mohammed Abd El-Twab Mohammed"/><br /><sub><b>Ibraheem Mohammed Abd El-Twab Mohammed</b></sub></a><br /><a href="https://github.com/IbraheemSultan/Medical-Store-DB/commits?author=IbraheemSultan" title="Tests">⚠️</a> <a href="https://github.com/IbraheemSultan/Medical-Store-DB/commits?author=IbraheemSultan" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MahmoudMedha"><img src="https://avatars.githubusercontent.com/u/208298621?v=4?s=100" width="100px;" alt="Mahmoud Medhat Mohamed"/><br /><sub><b>Mahmoud Medhat Mohamed</b></sub></a><br /><a href="https://github.com/IbraheemSultan/Medical-Store-DB/commits?author=MahmoudMedha" title="Documentation">📖</a> <a href="https://github.com/IbraheemSultan/Medical-Store-DB/commits?author=MahmoudMedha" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
